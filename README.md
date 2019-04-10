@@ -4,7 +4,7 @@ Este proyecto tiene el cliente para usar la api y a la vez la version incial del
 
 ## rest-api-client
 
-Cliente javascript para utilizar la api de todos
+Cliente javascript para utilizar la [api de todos](https://github.com/dminones/todo-node-rest-api)
 
 ## todo-mvc
 
