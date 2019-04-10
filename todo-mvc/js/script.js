@@ -5,7 +5,7 @@ function init() {
 }
 
 const model = {
-  listaTareas: new ListaTareas([new Tarea("primera"), new Tarea("second")])
+  listaTareas: new ListaTareas()
 };
 // const controller = new Controller(model);
 // console.log({ controller, model });

@@ -7,7 +7,7 @@ Tarea.prototype.toggle = function() {
   this.hecho = !this.hecho;
 };
 
-function ListaTareas(tareasInicial) {
+function ListaTareas(tareasInicial = []) {
   this.tareas = [...tareasInicial];
   this.eventoActualizar = new Evento(this);
 
@@ -29,6 +29,14 @@ function ListaTareas(tareasInicial) {
   };
 
   this.getAllItems = function() {
-    this.eventoActualizar.notificar();
+    Tareas.list((error, respuesta) => {
+      console.log(error, respuesta);
+      this.tareas = respuesta.map(task => {
+        const tarea = new Tarea(task.name);
+        tarea.hecho = task.status[0] == "completed";
+        return tarea;
+      });
+      this.eventoActualizar.notificar();
+    });
   };
 }
