@@ -1,11 +1,21 @@
 const Tareas = {
   baseUrl: "https://todo-node-rest.herokuapp.com/tasks/",
   list: function(callback) {
-    fetch(this.baseUrl)
-      .then(response => response.json())
-      .then(data => {
-        callback(null, data);
-      });
+    const xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4) {
+        if (this.status == 200) {
+          const response = JSON.parse(xhttp.responseText);
+          callback(null, response);
+        } else {
+          callback(new Error(this.status));
+        }
+      }
+    };
+    // se asume que hay una variable con una url
+    xhttp.open("GET", this.baseUrl);
+    xhttp.send();
   },
   crear: function(tarea, callback) {
     fetch(this.baseUrl, {

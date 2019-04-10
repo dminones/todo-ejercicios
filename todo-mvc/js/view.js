@@ -1,9 +1,7 @@
 function View(data, controller) {
   this.controller = controller;
-  //this.data = data;
-  // console.log(this.data)
+
   data.listaTareas.eventoActualizar.suscribir(model => {
-    //this.data = model
     this.render(model);
   });
 
@@ -13,7 +11,6 @@ function View(data, controller) {
     this.controller.addItem(textInput.value);
     textInput.value = "";
   };
-  // this.render(data.listaTareas);
   this.controller.getAllItems();
 }
 
